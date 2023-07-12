@@ -1,7 +1,7 @@
 CC=gcc
-CFLAGS=-I.
-DEPS = cradle.h
-OBJ = cradle.o main.o 
+CFLAGS=-I. -g
+DEPS = cradle.h parse.h dops.h stack.h function.h math.h
+OBJ = cradle.o parse.o dops.o stack.o function.o math.o main.o 
 RM      = rm -f
 
 default: all

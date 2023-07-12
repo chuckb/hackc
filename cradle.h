@@ -15,8 +15,12 @@ void expected(char* message);
 void match(char c);
 char get_name();
 char get_num();
+int is_add_op(char c);
+void emit(char* s);
+void emit_ln(char* s);
 void tab_emit(char* s);
 void tab_emit_ln(char* s);
+void tab_emit_constant(int c);
 void init();
 
 #endif

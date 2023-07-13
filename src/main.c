@@ -48,6 +48,9 @@ int main (void) {
   emit_call_mult16();
 */
   expression();
+  if (look.c != '\n') {
+    expected("Newline");
+  }
   emit_spin("end");
   emit_add16_function();
   emit_bit16_function();

@@ -104,7 +104,7 @@ void emit_bit16_function() {
   emit_address_at_stack_offset(X_OFFSET);
   tab_emit_ln("M=1");
   // Fix up stack for return
-  tab_emit_ln("(bit16.if.0)");
+  emit_ln("(bit16.if.0)");
   // Pop mask
   emit_pop_stack();
   // Get the return address into D
@@ -139,7 +139,7 @@ void emit_mult16_function() {
   emit_ln("(mult16)");
   // Init shiftedx to be x
   emit_move_stack_value(X_OFFSET, SHIFTEDX_OFFSET);
-  tab_emit_ln("(mult16.loop)");
+  emit_ln("(mult16.loop)");
   // Get the Jth bit of Y into D
   emit_peek_stack_to_d(Y_OFFSET);
   emit_push_d_to_stack();
@@ -158,7 +158,7 @@ void emit_mult16_function() {
   emit_address_at_stack_offset(SUM_OFFSET);
   // Add shiftedx into sum
   tab_emit_ln("M=D+M");
-  tab_emit_ln("(mult16.j.is.zero)");
+  emit_ln("(mult16.j.is.zero)");
   // shiftedx = shiftedx << 1
   emit_peek_stack_to_d(SHIFTEDX_OFFSET);
   emit_push_d_to_stack();

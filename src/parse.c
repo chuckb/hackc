@@ -3,20 +3,31 @@
 #include "dops.h"
 #include "math.h"
 #include "function.h"
+#include <ctype.h>
 
+// <factor> ::= <number> | (<expression>) | <variable>
 void factor() {
   if (look.c == '(') {
     match('(');
     expression();
     match(')');
+  } else if (isalpha(look.c)) {
+    // Set address of variable 
+    tab_emit("@");
+    char var[2];
+    var[0] = get_name();
+    var[1] = 0;
+    emit_ln(var);
+    // Push value at address onto stack
+    tab_emit_ln("D=M");
+    emit_push_d_to_stack();
   } else {
     // Push single digit onto stack
     tab_emit("@");
     char num[2];
     num[0] = get_num();
     num[1] = 0;
-    emit(num);
-    emit("\n");
+    emit_ln(num);
     tab_emit_ln("D=A");
     emit_push_d_to_stack();
   }

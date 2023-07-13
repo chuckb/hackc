@@ -5,22 +5,36 @@
 #include "function.h"
 #include <ctype.h>
 
-// <factor> ::= <number> | (<expression>) | <variable>
+// <identifier> ::= <variable> | <function>
+void identifier() {
+  char name = get_name();
+  if (look.c == '(') {
+    match('(');
+    match(')');
+    // Since there is not a def function mechanism yet, just treat as a return of zero.
+    emit_constant_to_d(0);
+    emit_push_d_to_stack();
+  } else {
+    // Set address of variable 
+    tab_emit("@");
+    char var[2];
+    var[0] = name;
+    var[1] = 0;
+    emit_ln(var);
+    // Push value at address onto stack
+    tab_emit_ln("D=M");
+    emit_push_d_to_stack();
+  }
+}
+
+// <factor> ::= <number> | (<expression>) | <identifier>
 void factor() {
   if (look.c == '(') {
     match('(');
     expression();
     match(')');
   } else if (isalpha(look.c)) {
-    // Set address of variable 
-    tab_emit("@");
-    char var[2];
-    var[0] = get_name();
-    var[1] = 0;
-    emit_ln(var);
-    // Push value at address onto stack
-    tab_emit_ln("D=M");
-    emit_push_d_to_stack();
+    identifier();
   } else {
     // Push single digit onto stack
     tab_emit("@");

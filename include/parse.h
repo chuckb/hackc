@@ -8,5 +8,6 @@ void add();
 void subtract();
 void multiply();
 void divide();
+void identifier();
 
 #endif

@@ -10,7 +10,7 @@ EMU=/Users/chuck_benedict/Desktop/nand2tetris/tools/CPUEmulator.sh
 
 _DEPS = cradle.h parse.h dops.h stack.h function.h math.h
 _OBJ = cradle.o parse.o dops.o stack.o function.o math.o main.o 
-_TRES = add.out addmult.out addmultdiv.out negparen.out paren.out singleint.out subtract.out threesum.txt unaryminus.out vars.out
+_TRES = add.out addmult.out addmultdiv.out negparen.out paren.out singleint.out subtract.out threesum.txt unaryminus.out vars.out undecf.out
 
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))

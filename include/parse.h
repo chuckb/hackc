@@ -4,6 +4,7 @@
 void term();
 void factor();
 void expression();
+void assignment();
 void add();
 void subtract();
 void multiply();

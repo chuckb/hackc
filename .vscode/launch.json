@@ -8,8 +8,8 @@
       "type": "lldb",
       "request": "launch",
       "name": "Debug",
-      "program": "${workspaceFolder}/hackc",
-      "stdio": ["threesum.txt", null, null],
+      "program": "${workspaceFolder}/obj/hackc",
+      "stdio": ["./test/innerassign.txt", null, null],
       "args": [],
       "cwd": "${workspaceFolder}"
     }

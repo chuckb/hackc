@@ -1,7 +1,7 @@
 load undecf.asm,
 output-file undecf.out,
 compare-to undecf.cmp,
-output-list RAM[0]%D1.6.1 RAM[256]%D1.6.1;
+output-list RAM[0]%D1.6.1 RAM[34]%D1.6.1;
 
 // Addrs: B=32, A=33
 set RAM[32] 5,

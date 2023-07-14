@@ -3,6 +3,7 @@
 #include "dops.h"
 #include "math.h"
 #include "function.h"
+#include "stack.h"
 #include <ctype.h>
 
 // <identifier> ::= <variable> | <function>
@@ -109,6 +110,30 @@ void expression() {
         break;
       default:
         expected("Addop");
+    }
+  }
+}
+
+// <assignment> ::= <variable>=<expression>
+void assignment() {
+  char name;
+  name = get_name();
+  if (look.c == '=') {
+    match('=');
+    expression();
+    // Get return value
+    emit_peek_stack_to_d(1);
+    // Set address of lhs variable 
+    tab_emit("@");
+    char var[2];
+    var[0] = name;
+    var[1] = 0;
+    emit_ln(var);
+    // Set lhs variable
+    tab_emit_ln("M=D");
+    // If at EOL, remove return value from stack.
+    if (look.c == '\n') {
+      emit_pop_stack();
     }
   }
 }

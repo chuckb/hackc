@@ -47,7 +47,7 @@ int main (void) {
   emit_push_d_to_stack(); 
   emit_call_mult16();
 */
-  expression();
+  assignment();
   if (look.c != '\n') {
     expected("Newline");
   }
